@@ -4,7 +4,14 @@ namespace Qb3ti\ExtendedSymfonyRequest;
 
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
-use function strlen;
+use function count;
+use function explode;
+use function strpos;
+use function substr;
+use function str_replace;
+use function trim;
+use function preg_replace;
+use function preg_match;
 
 class Request extends HttpFoundationRequest
 {
@@ -32,7 +39,7 @@ class Request extends HttpFoundationRequest
         return static::$urlPatterns;
     }
 
-    protected function loadParametersFromUrlPattern()
+    public function loadParametersFromUrlPattern()
     {
         if ($urlPattern = $this->getUrlPatternFromCurrentUrl()) {
             $requestUriParts = explode("/", trim($this->getRequestUri(), "\/"));
