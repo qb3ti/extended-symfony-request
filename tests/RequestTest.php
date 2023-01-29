@@ -12,7 +12,7 @@ class RequestTest extends TestCase
         Request::setUrlPatterns([
             "/path/test/{{id}}/{{name}}"
         ]);
-        
+
         $request = Request::create("/path/test/1/foo");
 
         $this->assertEquals(
